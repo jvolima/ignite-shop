@@ -12,3 +12,4 @@
 ```
   <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
 ```
+- Keen-slider para criação do carrossel de produtos
