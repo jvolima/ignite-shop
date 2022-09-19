@@ -5,20 +5,35 @@ import logoImg from "../assets/logo.svg"
 import { Container, Header } from "../styles/pages/app";
 import Image from "next/future/image";
 import { CartButton } from "../components/CartButton";
+import { Sidebar } from "../components/Sidebar";
+import { useState } from "react";
 
 globalStyles();
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  function handleOpenSidebar() {
+    setIsSidebarOpen(true);
+  }
+
+  function handleCloseSidebar() {
+    setIsSidebarOpen(false);
+  }
+
   return (
-    <Container>
-      <Header>
-        <Image src={logoImg} alt="" />
+    <>
+      { isSidebarOpen && <Sidebar closeSidebar={handleCloseSidebar} /> }
+      <Container>
+        <Header>
+          <Image src={logoImg} alt="" />
 
-        <CartButton />
-      </Header>
+          <CartButton openSidebar={handleOpenSidebar} />
+        </Header>
 
-      <Component {...pageProps} />
-    </Container>
+        <Component {...pageProps} />
+      </Container>
+    </>
   )
 }
 
