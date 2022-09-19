@@ -2,8 +2,8 @@ import { styled } from "../../styles";
 
 export const CartButtonContainer = styled("button", {
   position: 'relative',
-  width: 48,
-  height: 48,
+  width: '3rem',
+  height: '3rem',
 
   display: 'flex',
   alignItems: 'center',
@@ -18,15 +18,18 @@ export const CartButtonContainer = styled("button", {
     filter: 'brightness(1.2)',
   },
 
-  svg: {
-    color: '#8D8D99'
+  variants: {
+    svg: {
+      "empty": { color: '$gray500' },
+      "withContent": { color: '$gray300' }
+    }
   }
 });
 
 export const QuantityContainer = styled("div", {
   position: 'absolute',
-  width: 24,
-  height: 24,
+  width: '1.5rem',
+  height: '1.5rem',
   top: -7,
   right: -7,
 

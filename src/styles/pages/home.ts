@@ -61,3 +61,24 @@ export const Product = styled("div", {
     }
   }
 })
+
+export const ProductInfos = styled("div", {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '0.25rem'
+});
+
+export const HandbagContainer = styled("div", {
+  width: '3.5rem',
+  height: '3.5rem',
+  backgroundColor: '$green500',
+  borderRadius: 6,
+
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  svg: {
+    color: '$white'
+  }
+})

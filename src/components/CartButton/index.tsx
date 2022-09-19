@@ -5,8 +5,8 @@ export function CartButton() {
   const quantity = 0;
 
   return (
-    <CartButtonContainer>
-      { quantity >= 1 && (
+    <CartButtonContainer svg={quantity > 0 ? "withContent" : "empty"}>
+      { quantity > 0 && (
         <QuantityContainer>
           <span>{quantity}</span>
         </QuantityContainer>
