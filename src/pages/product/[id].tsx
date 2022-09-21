@@ -15,6 +15,7 @@ interface ProductProps {
     price: string;
     description: string;
     defaultPriceId: string; 
+    priceInNumber: number;
   }
 }
 
@@ -98,7 +99,8 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ para
           currency: 'BRL'
         }).format(price.unit_amount / 100),
         description: product.description,
-        defaultPriceId: price.id
+        defaultPriceId: price.id,
+        priceInNumber: price.unit_amount / 100
       }
     },
     revalidate: 60 * 60 * 1 // 1 hour

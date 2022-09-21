@@ -7,6 +7,7 @@ interface Product {
   price: string;
   description: string;
   defaultPriceId: string; 
+  priceInNumber: number;
 }
 
 interface CartContextType {

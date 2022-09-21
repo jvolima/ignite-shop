@@ -11,7 +11,6 @@ import Stripe from "stripe";
 import Link from "next/link";
 import Head from "next/head";
 import { Handbag } from "phosphor-react";
-import { useContext } from "react";
 
 interface HomeProps {
   products: {
@@ -77,6 +76,7 @@ export const getStaticProps: GetStaticProps = async () => {
         style: 'currency',
         currency: 'BRL'
       }).format(price.unit_amount / 100),
+      priceInNumber: price.unit_amount / 100
     }
   })
 
