@@ -1,9 +1,9 @@
-import axios from "axios";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/future/image";
 import Head from "next/head";
-import { useState } from "react";
+import { useContext } from "react";
 import Stripe from "stripe";
+import { CartContext } from "../../contexts/CartContext";
 import { stripe } from "../../lib/stripe";
 import { ImageContainer, ProductContainer, ProductDetails } from "../../styles/pages/product";
 
@@ -19,7 +19,7 @@ interface ProductProps {
 }
 
 export default function Product({ product }: ProductProps) {
-  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false);
+  /*const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false);
 
   async function handleBuyProduct() {
     try {
@@ -39,6 +39,12 @@ export default function Product({ product }: ProductProps) {
 
       alert('Falha ao redirecionar ao checkout!');
     }
+  }*/
+
+  const { addToCart } = useContext(CartContext);
+
+  function handleAddToCart() {
+    addToCart(product);
   }
 
   return (
@@ -56,7 +62,7 @@ export default function Product({ product }: ProductProps) {
           <span>{product.price}</span>
           <p>{product.description}</p>
           
-          <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>
+          <button onClick={handleAddToCart}>
             Colocar na sacola
           </button>
         </ProductDetails>

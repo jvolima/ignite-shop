@@ -1,4 +1,6 @@
 import { Handbag } from "phosphor-react";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 import { CartButtonContainer, QuantityContainer } from "./styles";
 
 interface CartButtonProps {
@@ -6,13 +8,13 @@ interface CartButtonProps {
 }
 
 export function CartButton({ openSidebar }: CartButtonProps) {
-  const quantity = 0;
+  const { productsInCart } = useContext(CartContext);
 
   return (
-    <CartButtonContainer onClick={openSidebar} svg={quantity > 0 ? "withContent" : "empty"}>
-      { quantity > 0 && (
+    <CartButtonContainer onClick={openSidebar} svg={productsInCart.length > 0 ? "withContent" : "empty"}>
+      { productsInCart.length > 0 && (
         <QuantityContainer>
-          <span>{quantity}</span>
+          <span>{productsInCart.length}</span>
         </QuantityContainer>
       )}
       <Handbag size={24} />

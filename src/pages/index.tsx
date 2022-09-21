@@ -11,6 +11,7 @@ import Stripe from "stripe";
 import Link from "next/link";
 import Head from "next/head";
 import { Handbag } from "phosphor-react";
+import { useContext } from "react";
 
 interface HomeProps {
   products: {
@@ -27,7 +28,7 @@ export default function Home({ products }: HomeProps) {
       perView: 3,
       spacing: 48
     }
-  })
+  });
 
   return (
     <>

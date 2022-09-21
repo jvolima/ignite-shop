@@ -7,6 +7,7 @@ import Image from "next/future/image";
 import { CartButton } from "../components/CartButton";
 import { Sidebar } from "../components/Sidebar";
 import { useState } from "react";
+import { CartContextProvider } from "../contexts/CartContext";
 
 globalStyles();
 
@@ -22,7 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <>
+    <CartContextProvider>
       { isSidebarOpen && <Sidebar closeSidebar={handleCloseSidebar} /> }
       <Container>
         <Header>
@@ -33,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
         <Component {...pageProps} />
       </Container>
-    </>
+    </CartContextProvider>
   )
 }
 
