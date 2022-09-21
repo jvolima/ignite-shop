@@ -2,6 +2,8 @@
 
 ## Funcionalidades da aplicação
 - Visualizar lista de produtos da loja
+- Adicionar items no carrinho
+- Comprar items
 
 ## Tecnologias utilizadas
 - Next
