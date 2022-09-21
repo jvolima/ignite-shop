@@ -12,6 +12,7 @@ interface Product {
 interface CartContextType {
   productsInCart: Product[];
   addToCart: (product: Product) => void;
+  removeProduct: (id: string) => void;
 }
 
 interface CartContextProviderProps {
@@ -27,17 +28,23 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     const productAlreadyInCart = productsInCart.find(item => item.id === product.id);
 
     if (productAlreadyInCart) {
-      return alert("Produto já está no carrinho.");
+      return alert("O produto já está no carrinho.");
       // toastify error
     }
 
     setProductsInCart(oldState => [...oldState, product]);
   }
+ 
+  function removeProduct(id: string) {
+    const cartWithoutRemovedOne = productsInCart.filter(product => product.id !== id);
+    setProductsInCart(cartWithoutRemovedOne);
+  }
 
   return (
     <CartContext.Provider value={{
       productsInCart,
-      addToCart
+      addToCart,
+      removeProduct
     }}>
       {children}
     </CartContext.Provider>

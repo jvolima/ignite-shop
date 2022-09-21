@@ -46,3 +46,10 @@ export const Content = styled("div", {
     color: '$gray100'
   }
 })
+
+export const ProductsList = styled("div", {
+  marginTop:  '2rem',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '1.5rem'
+})
