@@ -1,3 +1,4 @@
+import axios from "axios";
 import { SmileySad, X } from "phosphor-react";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
@@ -14,6 +15,23 @@ export function Sidebar({ closeSidebar }: SidebarProps) {
   const totalPrice = productsInCart.reduce((acc, item) => {
     return acc += item.priceInNumber
   }, 0);
+
+  async function handleBuyProduct() {
+    try {
+      const response = await axios.post('/api/checkout', {
+        pricesIds: productsInCart.map(product => {
+          return product.defaultPriceId
+        })
+      });
+
+      const { checkoutUrl } = response.data;
+
+      window.location.href = checkoutUrl;
+    } catch (error) {
+      // Conectar com uma ferramenta de observabilidade (Datadog / Sentry)
+      alert('Falha ao redirecionar ao checkout!');
+    }
+  }
 
   return (
     <SidebarContainer>
@@ -55,7 +73,7 @@ export function Sidebar({ closeSidebar }: SidebarProps) {
                 </Price>
               </CheckoutInfos>
 
-              <CheckoutButton>Finalizar compra</CheckoutButton>
+              <CheckoutButton onClick={handleBuyProduct}>Finalizar compra</CheckoutButton>
             </Checkout>
           </>
         ) : (
