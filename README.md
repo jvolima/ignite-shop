@@ -2,8 +2,9 @@
 
 ## Funcionalidades da aplicação
 - Visualizar lista de produtos da loja
-- Adicionar items no carrinho
-- Comprar items
+- Adicionar itens no carrinho
+- Remover itens do carrinho
+- Comprar itens
 
 ## Tecnologias utilizadas
 - Next
