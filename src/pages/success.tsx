@@ -4,7 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Stripe from "stripe";
 import { stripe } from "../lib/stripe";
-import { ImageContainer, SuccessContainer } from "../styles/pages/success";
+import { ImageContainer, Images, SuccessContainer } from "../styles/pages/success";
 
 interface SuccessProps {
   customerName: string;
@@ -23,6 +23,14 @@ export default function Success({ customerName, products }: SuccessProps) {
         <meta name="robots" content="noindex" />
       </Head>
       <SuccessContainer>
+        <Images>
+          {products.map(product => (
+            <ImageContainer key={product.name}>
+              <Image src={product.imageUrl} width={130} height={140} alt="" />
+            </ImageContainer>
+          ))}
+        </Images>
+
         <h1>Compra efetuada!</h1>
 
         {

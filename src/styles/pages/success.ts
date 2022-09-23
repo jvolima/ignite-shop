@@ -1,3 +1,4 @@
+import { Repeat } from "phosphor-react";
 import { styled } from "..";
 
 export const SuccessContainer = styled('main', {
@@ -9,6 +10,7 @@ export const SuccessContainer = styled('main', {
   height: 656,
 
   h1: {
+    marginTop: '3rem',
     fontSize: '$2xl',
     color: '$gray100',
   },
@@ -36,14 +38,19 @@ export const SuccessContainer = styled('main', {
   }
 });
 
+export const Images = styled("div", {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '2rem'
+})
+
 export const ImageContainer = styled('div', {
   width: '100%',
-  maxWidth: 130,
+  maxWidth: 150,
   height: 145,
   background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
-  borderRadius: 8,
+  borderRadius: '1000px',
   padding: '0.25rem',
-  marginTop: '4rem',
 
   display: 'flex',
   alignItems: 'center',
